@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.wwwnm.cn">
-  <title>天才胡的博客</title>
+  <title>关于2补码的一些思考 | 天才胡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="九宫格（二）demo 	 		#main{ 			width: 170px; 			height:170px; 			background: blue; 			margin: 0 auto; 		} 		#main div{ 			width: 50px; 			line-height: 50px; 			text-align:center; 			background: #AAA;">
-<meta name="keywords" content="前端,C,C++,Python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天才胡的博客">
-<meta property="og:url" content="http://www.wwwnm.cn/assets/demo/jiugongge_demo2.html">
+  <meta name="description" content="负数在计算机中如何表示？ 举例来说，+8在计算机中表示为二进制的1000，那么-8怎么表示呢？ 很容易想到，可以将一个二进制位（bit）专门规定为符号位，它等于0时就表示正数，等于1时就表示负数。比如，在8位机中，规定每个字节的最高位为符号位。那么，+8就是00001000，而-8则是10001000。 但是，随便找一本《计算机原理》，都会告诉你，实际上，计算机内部采用2的补码（Two’s Com">
+<meta name="keywords" content="计算机基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于2补码的一些思考">
+<meta property="og:url" content="http://www.wwwnm.cn/2019/07/02/2buma/index.html">
 <meta property="og:site_name" content="天才胡的博客">
-<meta property="og:description" content="九宫格（二）demo 	 		#main{ 			width: 170px; 			height:170px; 			background: blue; 			margin: 0 auto; 		} 		#main div{ 			width: 50px; 			line-height: 50px; 			text-align:center; 			background: #AAA;">
+<meta property="og:description" content="负数在计算机中如何表示？ 举例来说，+8在计算机中表示为二进制的1000，那么-8怎么表示呢？ 很容易想到，可以将一个二进制位（bit）专门规定为符号位，它等于0时就表示正数，等于1时就表示负数。比如，在8位机中，规定每个字节的最高位为符号位。那么，+8就是00001000，而-8则是10001000。 但是，随便找一本《计算机原理》，都会告诉你，实际上，计算机内部采用2的补码（Two’s Com">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2017-07-28T18:51:08.000Z">
+<meta property="og:updated_time" content="2019-07-02T13:55:42.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天才胡的博客">
-<meta name="twitter:description" content="九宫格（二）demo 	 		#main{ 			width: 170px; 			height:170px; 			background: blue; 			margin: 0 auto; 		} 		#main div{ 			width: 50px; 			line-height: 50px; 			text-align:center; 			background: #AAA;">
+<meta name="twitter:title" content="关于2补码的一些思考">
+<meta name="twitter:description" content="负数在计算机中如何表示？ 举例来说，+8在计算机中表示为二进制的1000，那么-8怎么表示呢？ 很容易想到，可以将一个二进制位（bit）专门规定为符号位，它等于0时就表示正数，等于1时就表示负数。比如，在8位机中，规定每个字节的最高位为符号位。那么，+8就是00001000，而-8则是10001000。 但是，随便找一本《计算机原理》，都会告诉你，实际上，计算机内部采用2的补码（Two’s Com">
   
   
     <link rel="icon" href="/favicon.png">
@@ -148,57 +148,82 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-2buma" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于2补码的一些思考
+    </h1>
+  
+
+        
+        <a href="/2019/07/02/2buma/" class="archive-article-date">
+  	<time datetime="2019-07-02T13:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!doctype html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-	<meta charset="UTF-8">
-	<title>九宫格（二）demo</title>
-	<style>
-		#main{
-			width: 170px;
-			height:170px;
-			background: blue;
-			margin: 0 auto;
-		}
-		#main div{
-			width: 50px;
-			line-height: 50px;
-			text-align:center;
-			background: #AAA;
-			margin:5px 5px 0 0;
-		}
-		#main a{
-			width: 55px;
-			line-height: 55px;
-			float: left;
-			padding: 0 0 5px 5px;
-			margin: 0 -5px -5px 0;
-			text-decoration: none;
-		}
-		#main a:hover{
-			background: red;
-		}
-	</style>
-</head>
-<body>
-	<div id="main">
-		<a href><div>1</div></a>
-		<a href><div>2</div></a>
-		<a href><div>3</div></a>
-		<a href><div>4</div></a>
-		<a href><div>5</div></a>
-		<a href><div>6</div></a>
-		<a href><div>7</div></a>
-		<a href><div>8</div></a>
-		<a href><div>9</div></a>
-	</div>
-</body>
-</html>
+        <p><strong>负数在计算机中如何表示？</strong></p>
+<p>举例来说，+8在计算机中表示为二进制的1000，那么-8怎么表示呢？</p>
+<p>很容易想到，可以将一个二进制位（bit）专门规定为符号位，它等于0时就表示正数，等于1时就表示负数。比如，在8位机中，规定每个字节的最高位为符号位。那么，+8就是00001000，而-8则是10001000。</p>
+<p>但是，随便找一本《计算机原理》，都会告诉你，实际上，计算机内部采用2的补码（Two’s Complement）表示负数。</p>
+<p>什么是2的补码？</p>
+<hr>
+<a id="more"></a>
+
+<p>它是一种数值的转换方法，要分二步完成：</p>
+<p>第一步，每一个二进制位都取相反值，0变成1，1变成0。比如，00001000的相反值就是11110111。</p>
+<p>第二步，将上一步得到的值加1。11110111就变成11111000。</p>
+<p>所以，00001000的2的补码就是11111000。也就是说，-8在计算机（8位机）中就是用11111000表示。</p>
+<p>不知道你怎么看，反正我觉得很奇怪，为什么要采用这么麻烦的方式表示负数，更直觉的方式难道不好吗？</p>
+<p>昨天，我在一本书里又看到了这个问题，然后就花了一点时间到网上找资料，现在总算彻底搞明白了。</p>
+<p>2的补码的好处</p>
+<p>首先，要明确一点。计算机内部用什么方式表示负数，其实是无所谓的。只要能够保持一一对应的关系，就可以用任意方式表示负数。所以，既然可以任意选择，那么理应选择一种最方便的方式。</p>
+<p>2的补码就是最方便的方式。它的便利体现在，所有的加法运算可以使用同一种电路完成。</p>
+<p>还是以-8作为例子。</p>
+<p>假定有两种表示方法。一种是直觉表示法，即10001000；另一种是2的补码表示法，即11111000。请问哪一种表示法在加法运算中更方便？</p>
+<p>随便写一个计算式，    16 + (-8) = ?</p>
+<p>16的二进制表示是 00010000，所以用直觉表示法，加法就要写成：</p>
+<pre><code>  ０００１００００
+＋１０００１０００
+－－－－－－－－－
+  １００１１０００</code></pre><p>可以看到，如果按照正常的加法规则，就会得到10011000的结果，转成十进制就是-24。显然，这是错误的答案。也就是说，在这种情况下，正常的加法规则不适用于正数与负数的加法，因此必须制定两套运算规则，一套用于正数加正数，还有一套用于正数加负数。从电路上说，就是必须为加法运算做两种电路。</p>
+<p>现在，再来看2的补码表示法。</p>
+<pre><code>  ０００１００００
+＋１１１１１０００
+－－－－－－－－－
+１００００１０００</code></pre><p>可以看到，按照正常的加法规则，得到的结果是100001000。注意，这是一个9位的二进制数。我们已经假定这是一台8位机，因此最高的第9位是一个溢出位，会被自动舍去。所以，结果就变成了00001000，转成十进制正好是8，也就是16 + (-8) 的正确答案。这说明了，2的补码表示法可以将加法运算规则，扩展到整个整数集，从而用一套电路就可以实现全部整数的加法。</p>
+<p>2的补码的本质</p>
+<p>在回答2的补码为什么能正确实现加法运算之前，我们先看看它的本质，也就是那两个步骤的转换方法是怎么来的。</p>
+<p>要将正数转成对应的负数，其实只要用0减去这个数就可以了。比如，-8其实就是0-8。</p>
+<p>已知8的二进制是00001000，-8就可以用下面的式子求出：</p>
+<pre><code>  ００００００００
+－００００１０００
+－－－－－－－－－</code></pre><p>因为00000000（被减数）小于0000100（减数），所以不够减。请回忆一下小学算术，如果被减数的某一位小于减数，我们怎么办？很简单，问上一位借1就可以了。</p>
+<p>所以，0000000也问上一位借了1，也就是说，被减数其实是100000000，算式也就改写成：</p>
+<p>１００００００００<br>－００００１０００<br>－－－－－－－－－<br>　１１１１１０００</p>
+<p>进一步观察，可以发现100000000 = 11111111 + 1，所以上面的式子可以拆成两个：</p>
+<pre><code>  １１１１１１１１
+－００００１０００
+－－－－－－－－－
+  １１１１０１１１
+＋０００００００１
+－－－－－－－－－
+  １１１１１０００</code></pre><p>2的补码的两个转换步骤就是这么来的。</p>
+<p>为什么正数加法适用于2的补码？</p>
+<p>实际上，我们要证明的是，X-Y或X+(-Y)可以用X加上Y的2的补码完成。</p>
+<p>Y的2的补码等于(11111111-Y)+1。所以，X加上Y的2的补码，就等于：</p>
+<pre><code>X + (11111111-Y) + 1</code></pre><p>我们假定这个算式的结果等于Z，即 Z = X + (11111111-Y) + 1</p>
+<p>接下来，分成两种情况讨论。</p>
+<p>第一种情况，如果X小于Y，那么Z是一个负数。这时，我们就对Z采用2的补码的逆运算，求出它对应的正数绝对值，再在前面加上负号就行了。所以，</p>
+<pre><code>Z = -[11111111-(Z-1)] = -[11111111-(X + (11111111-Y) + 1-1)] = X - Y</code></pre><p>第二种情况，如果X大于Y，这意味着Z肯定大于11111111，但是我们规定了这是8位机，最高的第9位是溢出位，必须被舍去，这相当于减去100000000。所以，</p>
+<pre><code>Z = Z - 100000000 = X + (11111111-Y) + 1 - 100000000 = X - Y</code></pre><p>这就证明了，在正常的加法规则下，可以利用2的补码得到正数与负数相加的正确结果。换言之，计算机只要部署加法电路和补码电路，就可以完成所有整数的加法。</p>
+
       
 
       
@@ -206,6 +231,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -256,7 +292,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.wwwnm.cn/assets/demo/jiugongge_demo2.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.wwwnm.cn/2019/07/02/2buma/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,7 +354,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
